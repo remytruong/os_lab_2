@@ -1,0 +1,2 @@
+arm-none-eabi-gcc -mcpu=arm6 -fpic  -ffreestanding -std=gnu99 -c C:\Users\remtr\Desktop\kernel\kernel.c -o C:\Users\remtr\Desktop\kernel\kernel.o  -O0
+arm-none-eabi-ld C:\Users\remtr\Desktop\kernel\boot.o C:\Users\remtr\Desktop\kernel\video.o C:\Users\remtr\Desktop\kernel\kernel.o -T C:\Users\remtr\Desktop\kernel\linker.ld -o C:\Users\remtr\Desktop\kernel\kernel.elf
