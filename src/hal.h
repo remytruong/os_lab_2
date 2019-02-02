@@ -1,26 +1,23 @@
-/*
-*	From 
-*	https://wiki.osdev.org/Raspberry_Pi_Bare_Bones#Building_a_Cross-Compiler
-*
-*/
+void hal_io_video_init();
+
 enum
 {
     // The GPIO registers base address.
-    GPIO_BASE = 0x3F200000, // for raspi2 & 3, 0x20200000 for raspi1
- 
+            GPIO_BASE = 0x3F200000, // for raspi2 & 3, 0x20200000 for raspi1
+
     // The offsets for reach register.
- 
+
     // Controls actuation of pull up/down to ALL GPIO pins.
-    GPPUD = (GPIO_BASE + 0x94),
- 
+            GPPUD = (GPIO_BASE + 0x94),
+
     // Controls actuation of pull up/down for specific GPIO pin.
-    GPPUDCLK0 = (GPIO_BASE + 0x98),
- 
+            GPPUDCLK0 = (GPIO_BASE + 0x98),
+
     // The base address for UART.
-    UART0_BASE = 0x3F201000, // for raspi2 & 3, 0x20201000 for raspi1
- 
+            UART0_BASE = 0x3F201000, // for raspi2 & 3, 0x20201000 for raspi1
+
     // The offsets for reach register for the UART.
-    UART0_DR     = (UART0_BASE + 0x00),
+            UART0_DR     = (UART0_BASE + 0x00),
     UART0_RSRECR = (UART0_BASE + 0x04),
     UART0_FR     = (UART0_BASE + 0x18),
     UART0_ILPR   = (UART0_BASE + 0x20),
