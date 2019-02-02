@@ -44,6 +44,10 @@ _video_sample:
     cmp r0, #0
     beq .vc_init_fail
 
+    ldr r4, =buffer
+    str r0, [r4]
+
+
     @ draw "NO OS" text
     bl vc_draw_no_os_bmp
     
@@ -1045,3 +1049,4 @@ vc_alloc_fb: .word 32, 0                      @ total size, code (0=req)
 .align 2
 txt_welcome: .asciz "No OS installed\r\n"
 txt_vc_fail: .asciz "VC initialization failed\r\n"
+buffer: .word 0
