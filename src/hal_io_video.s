@@ -21,7 +21,7 @@ _hal_io_video:
     bl  mb0_c8_write
     bl  mb0_c8_read
     tst r0, #0x80000008
-    beq .vc_init_fail
+    beq .               vc_init_fail
 
     @ check if the address is correct
     ldr r0, [r1, #20]
