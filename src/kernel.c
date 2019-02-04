@@ -7,6 +7,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <stdio.h>
 #include "hal.h"
 
 //halio
@@ -15,7 +16,6 @@ void hal_io_serial_putc(uint8_t, uint8_t);
 uint8_t hal_io_serial_getc(uint8_t);
 
 void delay(int32_t);
-void _hal_io_video(void);
 
 
 /*
@@ -23,8 +23,14 @@ void _hal_io_video(void);
  *
 **/
 void main(uint32_t r0, uint32_t r1, uint32_t atags){
-	
-	int32 mybuffer= hal_io_video_init();
+
+	uint32_t mybuffer = hal_io_video_init();
+	for(int i = 0; i < 240; i++) {
+		for(int j = 0;j<640;j++) {
+			hal_io_video_putpixel(mybuffer, j, i, 0xFFFFFFFF);
+		}
+	}
+
 	//Begin the one-line typewriter
 	hal_io_serial_putc('a','y');
 	hal_io_serial_putc('a','e');

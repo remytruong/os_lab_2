@@ -1,8 +1,7 @@
 .section .text
 .globl _hal_io_video
+.globl _hal_io_video_putpixel
 .align 2
-
-
 
 _hal_io_video:
 	push {lr}
@@ -21,12 +20,15 @@ _hal_io_video:
     bl  mb0_c8_write
     bl  mb0_c8_read
     tst r0, #0x80000008
-    beq .               vc_init_fail
+    beq .vc_init_fail
 
     @ check if the address is correct
     ldr r0, [r1, #20]
     cmp r0, #0
     beq .vc_init_fail
+
+    ldr r4, =buffer
+    str r0, [r4]
 
     pop {pc}
 
@@ -37,6 +39,12 @@ _hal_io_video:
 halt:
     wfe @ low-power mode
     b halt
+
+.align 4
+_hal_io_video_putpixel:
+    framebuffer .req r0
+    colour .req r2
+    str colour, [framebuffer, r1]
 
 @@@@@@@@@@@@@@ UART @@@@@@@@@@@@@
 
@@ -176,3 +184,4 @@ vc_alloc_fb: .word 32, 0                      @ total size, code (0=req)
 .align 2
 txt_welcome: .asciz "No OS installed\r\n"
 txt_vc_fail: .asciz "VC initialization failed\r\n"
+buffer: .word 0
