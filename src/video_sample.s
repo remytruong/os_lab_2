@@ -44,9 +44,6 @@ _video_sample:
     cmp r0, #0
     beq .vc_init_fail
 
-    ldr r4, =buffer
-    str r0, [r4]
-
 
     @ draw "NO OS" text
     bl vc_draw_no_os_bmp

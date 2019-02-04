@@ -2,7 +2,10 @@
 #include <stdint.h>
 #include "hal.h"
 
-void _hal_io_video(void);
+int32_t _hal_io_video(void);
+
+void _hal_io_video_putpixel(uint32_t framebuffer, int pixel, int colour);
+
 /*
 *	From
 *	https://wiki.osdev.org/Raspberry_Pi_Bare_Bones#Building_a_Cross-Compiler
@@ -21,10 +24,13 @@ uint32_t memory_read(uint32_t address){
     return *(volatile uint32_t*)address;
 }
 
-void hal_io_video_init() {
-    _hal_io_video();
+int32_t hal_io_video_init() {
+    return _hal_io_video();
 }
-
+void hal_io_video_putpixel(uint32_t framebuffer,int x, int y, int colour) {
+    int xd = (y * 640 + x) * 2;
+    _hal_io_video_putpixel(framebuffer, xd , colour);
+}
 void hal_io_serial_init() {
     // Disable UART0.
     memory_write(UART0_CR, 0x00000000);
