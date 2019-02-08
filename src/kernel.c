@@ -25,17 +25,29 @@ void delay(int32_t);
 void main(uint32_t r0, uint32_t r1, uint32_t atags){
 
 	uint32_t mybuffer = hal_io_video_init();
-	for(int i = 0; i < 240; i++) {
-		for(int j = 0;j<640;j++) {
-			hal_io_video_putpixel(mybuffer, j, i, 0xFFFFFFFF);
-		}
-	}
+	char o = 'o';
+	char s = 's';
+	uint32_t colour = 0x5A9C;
+	hal_io_video_putc(mybuffer, 100, 175, colour, o);
+	hal_io_video_putc(mybuffer, 279, 175, colour, o);
+	hal_io_video_putc(mybuffer, 409, 175, colour, s);
 
 	//Begin the one-line typewriter
-	hal_io_serial_putc('a','y');
-	hal_io_serial_putc('a','e');
-	hal_io_serial_putc('a','e');
-	hal_io_serial_putc('a','t');
+	hal_io_serial_putc('a', 'W');
+	hal_io_serial_putc('a', 'E');
+	hal_io_serial_putc('a', 'L');
+	hal_io_serial_putc('a', 'C');
+	hal_io_serial_putc('a', 'O');
+	hal_io_serial_putc('a', 'M');
+	hal_io_serial_putc('a', 'E');
+	hal_io_serial_putc('a', ' ');
+	hal_io_serial_putc('a', 'T');
+	hal_io_serial_putc('a', 'O');
+	hal_io_serial_putc('a', ' ');
+	hal_io_serial_putc('a','O');
+	hal_io_serial_putc('a',' ');
+	hal_io_serial_putc('a','O');
+	hal_io_serial_putc('a','S');
 	hal_io_serial_putc('a','\n');
 	hal_io_serial_putc('a','\r');
 

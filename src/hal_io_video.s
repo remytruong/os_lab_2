@@ -43,8 +43,9 @@ halt:
 .align 4
 _hal_io_video_putpixel:
     framebuffer .req r0
+	position .req r1
     colour .req r2
-    str colour, [framebuffer, r1]
+    str colour, [framebuffer, position]
 
 @@@@@@@@@@@@@@ UART @@@@@@@@@@@@@
 

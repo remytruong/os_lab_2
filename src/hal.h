@@ -1,5 +1,8 @@
 int32_t hal_io_video_init();
-void hal_io_video_putpixel(uint32_t framebuffer,int x, int y, int colour);
+void hal_io_video_putpixel(uint32_t framebuffer,int x, int y, uint32_t colour);
+void hal_io_video_putc(uint32_t framebuffer,int x, int y, uint32_t colour, char character);
+void hal_io_video_draw_horiz_line(uint32_t framebuffer, int x, int y, int length, uint32_t colour);
+void hal_io_video_draw_vert_line(uint32_t framebuffer, int x, int y, int length, uint32_t colour);
 enum
 {
     // The GPIO registers base address.
